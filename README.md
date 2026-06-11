@@ -2,7 +2,7 @@
 
 This repository contains the source code for the **NightDesk Helpdesk** module, a premium ticketing system built for Odoo 17.
 
-![NightDesk Logo](static/description/icon.png)
+![NightDesk Logo](nightdesk_helpdesk/static/description/icon.png)
 
 ## Overview
 
