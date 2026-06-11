@@ -20,7 +20,7 @@ Key Features:
 - 💬 **Communication History**: Full audit trail of all customer interactions.
 - 📊 **Insightful Dashboards**: Comprehensive reporting and analytics.
     """,
-    'author': 'NightDesk',
+    'author': 'Muhammad Ikhwan Fathulloh (NightDesk)',
     'website': 'https://github.com/Nocturnailed-Community/OdooNightDesk',
     'license': 'LGPL-3',
     'depends': [
