@@ -1,0 +1,27 @@
+/* Helpdesk Ticketing - Custom Styles */
+
+/* SLA Status badges */
+.o_field_badge.o_field_widget[name="sla_status"] .badge {
+    font-size: 0.85em;
+}
+
+/* Priority colors in list */
+.o_data_row.decoration-danger td {
+    color: #dc3545;
+}
+
+/* Kanban card urgency coloring */
+.oe_kanban_color_1 {
+    border-left: 4px solid #dc3545 !important;
+}
+.oe_kanban_color_2 {
+    border-left: 4px solid #fd7e14 !important;
+}
+.oe_kanban_color_3 {
+    border-left: 4px solid #ffc107 !important;
+}
+
+/* Hours open display */
+.o_field_float_time {
+    font-weight: 500;
+}

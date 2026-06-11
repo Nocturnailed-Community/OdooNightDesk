@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_tickets" name="My Tickets">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">My Tickets</t>
+            </t>
+            <t t-if="not tickets">
+                <p class="alert alert-warning">No support tickets found.</p>
+            </t>
+            <t t-if="tickets" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Ticket #</th>
+                        <th>Subject</th>
+                        <th>Stage</th>
+                        <th>Priority</th>
+                        <th>Created</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="tickets" t-as="ticket">
+                        <tr>
+                            <td><span t-esc="ticket.name"/></td>
+                            <td>
+                                <a t-att-href="'/my/ticket/%s' % ticket.id">
+                                    <span t-esc="ticket.ticket_title"/>
+                                </a>
+                            </td>
+                            <td><span t-esc="ticket.stage_id.name"/></td>
+                            <td><span t-esc="dict(ticket._fields['priority'].selection).get(ticket.priority)"/></td>
+                            <td><span t-field="ticket.create_date" t-options='{"widget": "date"}'/></td>
+                        </tr>
+                    </t>
+                </tbody>
+            </t>
+        </t>
+    </template>
+</odoo>

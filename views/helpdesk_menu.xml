@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ─── Root Menu ───────────────────────────────────────────── -->
+    <menuitem id="menu_helpdesk_root"
+              name="Helpdesk"
+              web_icon="helpdesk_ticketing,static/description/icon.png"
+              sequence="50"/>
+
+    <!-- ─── Main sub-menus ──────────────────────────────────────── -->
+    <menuitem id="menu_helpdesk_tickets"
+              name="Tickets"
+              parent="menu_helpdesk_root"
+              sequence="10"/>
+
+    <menuitem id="menu_helpdesk_all_tickets"
+              name="All Tickets"
+              parent="menu_helpdesk_tickets"
+              action="action_helpdesk_ticket"
+              sequence="10"/>
+
+    <menuitem id="menu_helpdesk_my_tickets"
+              name="My Tickets"
+              parent="menu_helpdesk_tickets"
+              action="action_helpdesk_my_tickets"
+              sequence="20"/>
+
+    <!-- ─── Configuration ───────────────────────────────────────── -->
+    <menuitem id="menu_helpdesk_config"
+              name="Configuration"
+              parent="menu_helpdesk_root"
+              sequence="100"
+              groups="helpdesk_ticketing.group_helpdesk_manager"/>
+
+    <menuitem id="menu_helpdesk_teams"
+              name="Teams"
+              parent="menu_helpdesk_config"
+              action="action_helpdesk_team"
+              sequence="10"/>
+
+    <menuitem id="menu_helpdesk_stages"
+              name="Stages"
+              parent="menu_helpdesk_config"
+              action="action_helpdesk_stage"
+              sequence="20"/>
+
+    <menuitem id="menu_helpdesk_categories"
+              name="Categories"
+              parent="menu_helpdesk_config"
+              action="action_helpdesk_category"
+              sequence="30"/>
+
+    <menuitem id="menu_helpdesk_sla"
+              name="SLA Policies"
+              parent="menu_helpdesk_config"
+              action="action_helpdesk_sla"
+              sequence="40"/>
+
+</odoo>

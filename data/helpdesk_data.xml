@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- ── Default Stages ───────────────────────────────── -->
+        <record id="stage_new" model="helpdesk.stage">
+            <field name="name">New</field>
+            <field name="sequence">1</field>
+            <field name="legend_normal">In Queue</field>
+        </record>
+        <record id="stage_in_progress" model="helpdesk.stage">
+            <field name="name">In Progress</field>
+            <field name="sequence">10</field>
+            <field name="legend_normal">Being Handled</field>
+            <field name="legend_blocked">Waiting for Customer</field>
+            <field name="legend_done">Solution Ready</field>
+        </record>
+        <record id="stage_awaiting_customer" model="helpdesk.stage">
+            <field name="name">Awaiting Customer</field>
+            <field name="sequence">20</field>
+        </record>
+        <record id="stage_resolved" model="helpdesk.stage">
+            <field name="name">Resolved</field>
+            <field name="sequence">30</field>
+        </record>
+        <record id="stage_closed" model="helpdesk.stage">
+            <field name="name">Closed</field>
+            <field name="sequence">40</field>
+            <field name="is_closed">True</field>
+            <field name="fold">True</field>
+        </record>
+
+        <!-- ── Default Categories ───────────────────────────── -->
+        <record id="category_technical" model="helpdesk.category">
+            <field name="name">Technical Issue</field>
+        </record>
+        <record id="category_billing" model="helpdesk.category">
+            <field name="name">Billing</field>
+        </record>
+        <record id="category_general" model="helpdesk.category">
+            <field name="name">General Inquiry</field>
+        </record>
+        <record id="category_bug" model="helpdesk.category">
+            <field name="name">Bug Report</field>
+            <field name="parent_id" ref="category_technical"/>
+        </record>
+
+        <!-- ── Default SLA ──────────────────────────────────── -->
+        <record id="sla_standard" model="helpdesk.sla">
+            <field name="name">Standard SLA</field>
+            <field name="time_low">72</field>
+            <field name="time_normal">48</field>
+            <field name="time_high">24</field>
+            <field name="time_critical">4</field>
+        </record>
+        <record id="sla_premium" model="helpdesk.sla">
+            <field name="name">Premium SLA</field>
+            <field name="time_low">48</field>
+            <field name="time_normal">24</field>
+            <field name="time_high">8</field>
+            <field name="time_critical">2</field>
+        </record>
+
+        <!-- ── Default Team ─────────────────────────────────── -->
+        <record id="team_support" model="helpdesk.team">
+            <field name="name">Customer Support</field>
+            <field name="sequence">10</field>
+            <field name="sla_id" ref="sla_standard"/>
+        </record>
+
+    </data>
+</odoo>
