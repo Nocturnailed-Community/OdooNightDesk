@@ -133,6 +133,26 @@
                             <field name="description" widget="html"
                                    placeholder="Describe the issue…"/>
                         </page>
+                        <page string="AI Insights" name="nlp_analysis">
+                            <group>
+                                <group string="Sentiment Analysis">
+                                    <field name="sentiment" widget="badge"
+                                           decoration-success="sentiment == 'positive'"
+                                           decoration-info="sentiment == 'neutral'"
+                                           decoration-danger="sentiment == 'negative'"/>
+                                    <field name="sentiment_score" widget="progressbar"
+                                           options="{'current_value': 'sentiment_score', 'max_value': 1, 'editable': false}"/>
+                                </group>
+                                <group string="Urgency Scoring">
+                                    <field name="urgency_score" widget="gauge" 
+                                           options="{'max_field': 1, 'style': 'width:120px; height: 90px;'}"/>
+                                </group>
+                            </group>
+                            <p class="text-muted">
+                                <i class="fa fa-info-circle"/> 
+                                These insights are generated using rule-based Natural Language Processing to assist in prioritization.
+                            </p>
+                        </page>
                     </notebook>
                 </sheet>
 
@@ -164,6 +184,12 @@
                 <field name="sla_status" widget="badge" optional="show"
                        decoration-success="sla_status == 'ok' or sla_status == 'reached'"
                        decoration-danger="sla_status == 'failed'"/>
+                <field name="sentiment" widget="badge" optional="show"
+                       decoration-success="sentiment == 'positive'"
+                       decoration-info="sentiment == 'neutral'"
+                       decoration-danger="sentiment == 'negative'"/>
+                <field name="urgency_score" widget="progressbar" optional="show"
+                       options="{'max_value': 1}"/>
                 <field name="kanban_state" widget="kanban_state_selection" optional="show"/>
                 <field name="is_closed" invisible="1"/>
                 <field name="hours_open" optional="hide"/>
@@ -200,6 +226,14 @@
                                         </strong>
                                         <small class="o_kanban_record_subtitle text-muted">
                                             <field name="name"/>
+                                            <span t-if="record.sentiment.raw_value == 'negative'" 
+                                                  class="badge text-bg-danger ms-1" title="Negative Sentiment">
+                                                <i class="fa fa-smile-o"/>
+                                            </span>
+                                            <span t-if="record.sentiment.raw_value == 'positive'" 
+                                                  class="badge text-bg-success ms-1" title="Positive Sentiment">
+                                                <i class="fa fa-smile-o"/>
+                                            </span>
                                         </small>
                                     </div>
                                     <field name="priority" widget="priority"/>

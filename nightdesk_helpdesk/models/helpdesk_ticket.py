@@ -3,6 +3,7 @@ from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
 from datetime import datetime, timedelta
 import logging
+from . import nlp_utils
 
 _logger = logging.getLogger(__name__)
 
@@ -121,6 +122,21 @@ class HelpdeskTicket(models.Model):
         store=True,
     )
 
+    # ─── NLP Analysis ──────────────────────────────────────────────
+    sentiment = fields.Selection([
+        ('positive', 'Positive'),
+        ('neutral', 'Neutral'),
+        ('negative', 'Negative'),
+    ], string='Sentiment', compute='_compute_nlp_analysis', store=True, tracking=True)
+    sentiment_score = fields.Float(
+        string='Sentiment Score', compute='_compute_nlp_analysis', store=True,
+        help="Score from -1.0 (Very Negative) to 1.0 (Very Positive)"
+    )
+    urgency_score = fields.Float(
+        string='Urgency Awareness', compute='_compute_nlp_analysis', store=True,
+        help="Score from 0.0 to 1.0 based on keyword intensity"
+    )
+
     # ─── Computed ──────────────────────────────────────────────────
     color = fields.Integer(compute='_compute_color')
     ticket_count_by_partner = fields.Integer(
@@ -198,6 +214,17 @@ class HelpdeskTicket(models.Model):
                 ticket.sla_status = 'failed'
             else:
                 ticket.sla_status = 'ok'
+
+    @api.depends('ticket_title', 'description')
+    def _compute_nlp_analysis(self):
+        for ticket in self:
+            combined_text = f"{ticket.ticket_title or ''} {nlp_utils.strip_tags(ticket.description or '')}"
+            
+            sentiment, sentiment_score = nlp_utils.analyze_sentiment(combined_text)
+            ticket.sentiment = sentiment
+            ticket.sentiment_score = sentiment_score
+            
+            ticket.urgency_score = nlp_utils.analyze_urgency(combined_text)
 
     # ───────────────────────────────────────────────────────────────
     # ORM overrides

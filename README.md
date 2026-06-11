@@ -73,6 +73,10 @@ NightDesk Helpdesk is a comprehensive solution for managing customer support tic
 - **JavaScript (OWL)**
 - **CSS**
 
+## Credits
+
+Developed and maintained by **[Muhammad Ikhwan Fathulloh](https://github.com/Muhammad-Ikhwan-Fathulloh)**.
+
 ## License
 
 This project is licensed under the [LGPL-3](LICENSE) license.
