@@ -21,7 +21,7 @@ Key Features:
 - 📊 **Insightful Dashboards**: Comprehensive reporting and analytics.
     """,
     'author': 'Muhammad Ikhwan Fathulloh (NightDesk)',
-    'website': 'https://github.com/Nocturnailed-Community/OdooNightDesk',
+    'website': 'https://github.com/Nocturnailed-Community/nightdesk_helpdesk',
     'license': 'LGPL-3',
     'depends': [
         'base',
