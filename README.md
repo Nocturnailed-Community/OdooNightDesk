@@ -20,13 +20,50 @@ NightDesk Helpdesk is a comprehensive solution for managing customer support tic
 
 ## Installation
 
-1.  Clone this repository into your Odoo addons folder:
+### Odoo Community (On-Premise)
+
+1.  **Navigate to your Odoo custom addons directory:**
     ```bash
-    git clone ssh://git@github.com:Nocturnailed-Community/OdooNightDesk.git
+    cd /path/to/odoo/custom-addons/
     ```
-2.  Update your Odoo configuration file to include the module path.
-3.  Restart your Odoo server.
-4.  Activate the module from the Odoo Apps menu.
+
+2.  **Clone the repository:**
+    ```bash
+    # Using SSH
+    git clone ssh://git@github.com:Nocturnailed-Community/OdooNightDesk.git
+    
+    # Or Using HTTPS
+    git clone https://github.com/Nocturnailed-Community/OdooNightDesk.git
+    ```
+
+3.  **Switch to the 17.0 branch:**
+    ```bash
+    cd OdooNightDesk
+    git checkout 17.0
+    ```
+
+4.  **Configure Odoo addons path:**
+    Add the repository path to your `odoo.conf` file:
+    ```ini
+    addons_path = /path/to/odoo/addons,/path/to/custom-addons/OdooNightDesk
+    ```
+
+5.  **Restart Odoo:**
+    ```bash
+    sudo systemctl restart odoo
+    ```
+
+6.  **Update Module List:**
+    ```bash
+    ./odoo-bin -u all -d your_database_name
+    ```
+
+### Via Odoo UI
+
+1.  Activate **Developer Mode**.
+2.  Go to **Apps** menu → click **Update Apps List**.
+3.  Search for `NightDesk Helpdesk`.
+4.  Click **Install**.
 
 ## Technologies
 
