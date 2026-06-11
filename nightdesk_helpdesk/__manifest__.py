@@ -21,7 +21,7 @@ Key Features:
 - 📊 **Insightful Dashboards**: Comprehensive reporting and analytics.
     """,
     'author': 'NightDesk',
-    'website': 'https://github.com/ikhwan-al-anshor/OdooNightDesk',
+    'website': 'https://github.com/Nocturnailed-Community/OdooNightDesk',
     'license': 'LGPL-3',
     'depends': [
         'base',
@@ -46,7 +46,7 @@ Key Features:
     'demo': [],
     'assets': {
         'web.assets_backend': [
-            'helpdesk_ticketing/static/src/css/helpdesk.css',
+            'nightdesk_helpdesk/static/src/css/helpdesk.css',
         ],
     },
     'installable': True,

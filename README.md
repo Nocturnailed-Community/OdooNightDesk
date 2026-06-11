@@ -22,7 +22,7 @@ NightDesk Helpdesk is a comprehensive solution for managing customer support tic
 
 1.  Clone this repository into your Odoo addons folder:
     ```bash
-    git clone https://github.com/Nocturnailed-Community/OdooNightDesk.git
+    git clone ssh://git@github.com:Nocturnailed-Community/OdooNightDesk.git
     ```
 2.  Update your Odoo configuration file to include the module path.
 3.  Restart your Odoo server.
